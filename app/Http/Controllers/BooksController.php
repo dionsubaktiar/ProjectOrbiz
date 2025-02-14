@@ -19,6 +19,18 @@ class BooksController extends Controller
             "data" => $data
         ], 200);
     }
+    public function likes($id)
+    {
+        $data = Books::find($id);
+        if (!$data) {
+            return response()->json(['message' => 'ID book tidak ada'], 404);
+        }
+        $like = $data->vote_count;
+        $new_like = $like + 1;
+        $data->update(['vote_count' => $new_like]);
+        return response()->json(["message" => "berhasil like"], 200);
+    }
+
 
     /**
      * Show the form for creating a new resource.

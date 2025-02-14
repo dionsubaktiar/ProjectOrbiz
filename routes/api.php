@@ -13,3 +13,4 @@ Route::post('me', [LoginController::class, 'me']);
 Route::resource('books', BooksController::class);
 Route::post('/books/search', [BooksController::class, 'search']);
 Route::put('/books/like', [BooksController::class, 'like']);
+Route::put('/books/likes/{id}', [BooksController::class, 'like']);
